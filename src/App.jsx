@@ -1,17 +1,127 @@
-import { Carousel, Timeline } from "antd";
+import { Button, Carousel, Timeline } from "antd";
+import pic from "./assets/pic.jpg";
+import picB from "./assets/pic1.jpg";
+
+import pic1 from "./assets/1.jpg";
+import pic2 from "./assets/2.jpg";
+import pic3 from "./assets/3.jpg";
+import pic4 from "./assets/4.jpg";
+import pic5 from "./assets/5.jpg";
+import pic6 from "./assets/6.jpg";
+import pic7 from "./assets/7.jpg";
+import pic8 from "./assets/8.jpg";
+import pic9 from "./assets/9.jpg";
+import pic10 from "./assets/10.jpg";
+import pic11 from "./assets/11.jpg";
+import pic12 from "./assets/12.jpg";
+import pic13 from "./assets/13.jpg";
+import pic14 from "./assets/14.jpg";
+import pic15 from "./assets/15.jpg";
+import pic16 from "./assets/16.jpg";
+import pic17 from "./assets/17.jpg";
+import pic18 from "./assets/18.jpg";
+import pic19 from "./assets/19.jpg";
+import pic20 from "./assets/20.jpg";
+import pic21 from "./assets/21.jpg";
+import pic22 from "./assets/22.jpg";
+import pic23 from "./assets/23.jpg";
+import pic23_1 from "./assets/23-1.jpg";
+import pic24 from "./assets/24.jpg";
+import pic25 from "./assets/25.jpg";
+import pic26 from "./assets/26.jpg";
+import pic27 from "./assets/27.jpg";
+import pic28 from "./assets/28.jpg";
+import pic29 from "./assets/29.jpg";
+import pic30 from "./assets/30.jpg";
+import pic31 from "./assets/31.jpg";
+import pic32 from "./assets/32.jpg";
+import pic33 from "./assets/33.jpg";
+import pic34 from "./assets/34.jpg";
+import pic35 from "./assets/35.jpg";
+import pic36 from "./assets/36.jpg";
+import pic37 from "./assets/37.jpg";
+import pic38 from "./assets/38.jpg";
+import pic39 from "./assets/39.jpg";
+import pic40 from "./assets/40.jpg";
+import pic41 from "./assets/41.jpg";
+import pic42 from "./assets/42.jpg";
+import pic43 from "./assets/43.jpg";
+import pic44 from "./assets/44.jpg";
+import pic45 from "./assets/45.jpg";
+import pic46 from "./assets/46.jpg";
+import pic47 from "./assets/47.jpg";
+import pic48 from "./assets/48.jpg";
 import "./index.css";
 
 const App = () => {
   const contentStyle = {
     margin: 0,
-    height: "160px",
     color: "#fff",
-    lineHeight: "160px",
     textAlign: "center",
     background: "#364d79",
+    height: 600,
+    justifyContent: "center",
+    alignItems: "center",
   };
   const onChange = (currentSlide) => {
     console.log(currentSlide);
+  };
+  const imgItems = [
+    pic1,
+    pic2,
+    pic3,
+    pic4,
+    pic5,
+    pic6,
+    pic7,
+    pic8,
+    pic9,
+    pic10,
+    pic11,
+    pic12,
+    pic13,
+    pic14,
+    pic15,
+    pic16,
+    pic17,
+    pic18,
+    pic19,
+    pic20,
+    pic21,
+    pic22,
+    pic23,
+    pic23_1,
+    pic24,
+    pic25,
+    pic26,
+    pic27,
+    pic38,
+    pic40,
+    pic36,
+    pic30,
+    pic29,
+    pic28,
+    pic35,
+    pic41,
+    pic42,
+    pic48,
+    pic47,
+    pic45,
+    pic43,
+    pic44,
+    pic46,
+    pic,
+    picB,
+  ];
+  const handleClick = () => {
+    imgItems.forEach((image, index) => {
+      const link = document.createElement("a");
+      link.href = image;
+      link.download = `image${index + 1}.jpg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
   };
   return (
     <>
@@ -215,7 +325,7 @@ const App = () => {
               <p>
                 <p>結</p>
                 <p>
-                  感謝大家看，購買任何東西請確認對方個人資料是否充足，最好以面交為主，若有任何疑慮先去備案，不要幫對方想好理由合理化依竊。
+                  感謝大家看，購買任何東西請確認對方個人資料內容是否充足，最好以面交為主，若有任何疑慮先去備案，不要幫對方任何行為合理化。
                 </p>
               </p>
             ),
@@ -231,12 +341,15 @@ const App = () => {
           },
         ]}
       />
-      <Carousel afterChange={onChange}>
-        <div>{/* <img src={pic1} alt="pic1" /> */}</div>
-        <div>{/* <img src={pic1} alt="pic2" /> */}</div>
-        <div>{/* <img src={pic1} alt="pic3" /> */}</div>
-        <div>{/* <img src={pic1} alt="pic4" /> */}</div>
+      <Carousel afterChange={onChange} arrows infinite={false}>
+        {imgItems.map((item, index) => (
+          <div key={index} >
+            <img src={item} style={contentStyle} alt={`pic${index}`} />
+          </div>
+        ))}
       </Carousel>
+      <Carousel arrows infinite={false}></Carousel>
+      <Button onClick={handleClick}>下載圖檔</Button>
     </>
   );
 };
